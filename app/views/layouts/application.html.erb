@@ -7,6 +7,17 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<div class="navbar">
+  		<div class="navbar-inner">
+    		<a class="brand" href="#">Title</a>
+    			<ul class="nav">
+      			<li class="active"><a href="#">Home</a></li>
+     			 <li><a href="#">Link</a></li>
+     			 <li><a href="#">Link</a></li>
+    			</ul>
+  		</div>
+	</div>
+	<div class="container">
 	<% if user_signed_in? %>
   Logged in as <strong><%= current_user.email %></strong>.
   <%= link_to 'Edit profile', edit_user_registration_path %> |
@@ -17,6 +28,6 @@
 <% end %>
 
 <%= yield %>
-
+	</div>
 </body>
 </html>
