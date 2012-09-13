@@ -1,0 +1,21 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Nom:</b>
+  <%= @booth.nom %>
+</p>
+
+<p>
+  <b>Pays:</b>
+  <%= @booth.pays %>
+</p>
+
+<p>
+  <b>Description:</b>
+  <%= @booth.description %>
+</p>
+
+<% if can? :update, @booth %>
+<%= link_to 'Edit', edit_booth_path(@booth) %> 
+<% end %>|
+<%= link_to 'Back', booths_path %>

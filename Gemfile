@@ -20,6 +20,7 @@ group :assets do
   gem 'uglifier', '>= 1.0.3'
   gem 'devise'
   gem 'twitter-bootstrap-rails'
+  gem 'cancan'
 end
 
 gem 'jquery-rails'
