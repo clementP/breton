@@ -17,6 +17,7 @@ class BoothsController < ApplicationController
   def show
     @booth = Booth.find(params[:id])
 
+
     respond_to do |format|
       format.html # show.html.erb
       format.json { render json: @booth }
@@ -44,6 +45,8 @@ class BoothsController < ApplicationController
   def create
     @booth = Booth.new(params[:booth])
 
+    @booth.user_id = current_user.id if current_user
+
     respond_to do |format|
       if @booth.save
         format.html { redirect_to @booth, notice: 'Booth was successfully created.' }
@@ -59,6 +62,8 @@ class BoothsController < ApplicationController
   # PUT /booths/1.json
   def update
     @booth = Booth.find(params[:id])
+
+    @contact = contact.new
 
     respond_to do |format|
       if @booth.update_attributes(params[:booth])

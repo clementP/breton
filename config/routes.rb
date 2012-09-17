@@ -1,4 +1,6 @@
 Breton::Application.routes.draw do
+  resources :contacts
+
   resources :booths
 
   devise_for :users

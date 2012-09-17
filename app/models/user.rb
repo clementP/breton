@@ -10,4 +10,6 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
 
   ROLES = %w[admin marque visiteur agent]
+
+  has_many :booth
 end

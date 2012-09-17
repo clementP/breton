@@ -1,21 +1,40 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Booth -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+</div>
 
-<p>
-  <b>Nom:</b>
-  <%= @booth.nom %>
-</p>
+<div class="row">
+  <div class="span8">
+  	<dt><strong><%= model_class.human_attribute_name(:nom) %>:</strong></dt>
+    <dd><%= @booth.nom %></dd>
+  </div>
+  <div class="span4">
+  	<dt><strong><%= model_class.human_attribute_name(:pays) %>:</strong></dt>
+  	<dd><%= @booth.pays %></dd>
+  </div>	
+</div>
 
-<p>
-  <b>Pays:</b>
-  <%= @booth.pays %>
-</p>
+<dl class="dl-horizontal">
+ <div class="row">
+  <div class="span8"> 
+  <dt><strong><%= model_class.human_attribute_name(:description) %>:</strong></dt>
+  <dd><%= @booth.description %></dd>
+</div>
+</div>
+</dl>
 
-<p>
-  <b>Description:</b>
-  <%= @booth.description %>
-</p>
+<div class="form-actions">
 
-<% if can? :update, @booth %>
-<%= link_to 'Edit', edit_booth_path(@booth) %> 
-<% end %>|
-<%= link_to 'Back', booths_path %>
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              booths_path, :class => 'btn'  %>
+            
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_booth_path(@booth), :class => 'btn' %>
+              
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              booth_path(@booth),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+              
+</div>
