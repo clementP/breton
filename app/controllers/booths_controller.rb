@@ -17,6 +17,8 @@ class BoothsController < ApplicationController
   def show
     @booth = Booth.find(params[:id])
 
+   
+
 
     respond_to do |format|
       format.html # show.html.erb
@@ -38,6 +40,9 @@ class BoothsController < ApplicationController
   # GET /booths/1/edit
   def edit
     @booth = Booth.find(params[:id])
+
+    @contact = @booth.contact.new
+
   end
 
   # POST /booths
@@ -63,7 +68,9 @@ class BoothsController < ApplicationController
   def update
     @booth = Booth.find(params[:id])
 
-    @contact = contact.new
+    @contact = @booth.contact.new
+
+
 
     respond_to do |format|
       if @booth.update_attributes(params[:booth])

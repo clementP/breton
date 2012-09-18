@@ -1,6 +1,29 @@
 <%- model_class = Booth -%>
-<div class="page-header">
-  <h1><%=t '.title', :default => t('helpers.titles.edit', :model => model_class.model_name.human,
-                                   :default => "Edit #{model_class.model_name.human}") %></h1>
+
+<div class="accordion" id="accordion2">
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <h3 class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseOne">
+         <%=t '.title', :default => t('helpers.titles.edit', :model => model_class.model_name.human,
+                                   :default => "Edit #{model_class.model_name.human}") %>
+      </h3>
+    </div>
+    <div id="collapseOne" class="accordion-body collapse in">
+      <div class="accordion-inner">
+        <%= render :partial => 'form' %>
+      </div>
+    </div>
+  </div>
+  <div class="accordion-group">
+    <div class="accordion-heading">
+      <h3 class="accordion-toggle" data-toggle="collapse" data-parent="#accordion2" href="#collapseTwo">
+        Add your contact
+      </h3>
+    </div>
+    <div id="collapseTwo" class="accordion-body collapse">
+      <div class="accordion-inner">
+        <%= render :partial => '/contacts/form', :contact => @booth.contact.new %>
+      </div>
+    </div>
+  </div>
 </div>
-<%= render :partial => 'form' %>

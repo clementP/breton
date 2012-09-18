@@ -1,45 +1,35 @@
-<p id="notice"><%= notice %></p>
+<%- model_class = Contact -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human %></h1>
+</div>
 
-<p>
-  <b>Poste:</b>
-  <%= @contact.poste %>
-</p>
+<dl class="dl-horizontal">
+  <dt><strong><%= model_class.human_attribute_name(:poste) %>:</strong></dt>
+  <dd><%= @contact.poste %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:prenom) %>:</strong></dt>
+  <dd><%= @contact.prenom %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:nom) %>:</strong></dt>
+  <dd><%= @contact.nom %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:email) %>:</strong></dt>
+  <dd><%= @contact.email %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:telephone) %>:</strong></dt>
+  <dd><%= @contact.telephone %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:descritpion) %>:</strong></dt>
+  <dd><%= @contact.descritpion %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:primary_id) %>:</strong></dt>
+  <dd><%= @contact.primary_id %></dd>
+  <dt><strong><%= model_class.human_attribute_name(:booth_id) %>:</strong></dt>
+  <dd><%= @contact.booth_id %></dd>
+</dl>
 
-<p>
-  <b>Prenom:</b>
-  <%= @contact.prenom %>
-</p>
-
-<p>
-  <b>Nom:</b>
-  <%= @contact.nom %>
-</p>
-
-<p>
-  <b>Email:</b>
-  <%= @contact.email %>
-</p>
-
-<p>
-  <b>Telephone:</b>
-  <%= @contact.telephone %>
-</p>
-
-<p>
-  <b>Descritpion:</b>
-  <%= @contact.descritpion %>
-</p>
-
-<p>
-  <b>Primary:</b>
-  <%= @contact.primary_id %>
-</p>
-
-<p>
-  <b>Booth:</b>
-  <%= @contact.booth_id %>
-</p>
-
-
-<%= link_to 'Edit', edit_contact_path(@contact) %> |
-<%= link_to 'Back', contacts_path %>
+<div class="form-actions">
+  <%= link_to t('.back', :default => t("helpers.links.back")),
+              contacts_path, :class => 'btn'  %>
+  <%= link_to t('.edit', :default => t("helpers.links.edit")),
+              edit_contact_path(@contact), :class => 'btn' %>
+  <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+              contact_path(@contact),
+              :method => 'delete',
+              :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+              :class => 'btn btn-danger' %>
+</div>
